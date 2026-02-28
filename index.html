@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E.L.B.E.R.R. OMNI-TITAN // VOID_OS</title>
+    <style>
+        :root { --glow: #00ff41; --blood: #8a0303; --bg: #020202; --dim: #004411; }
+        
+        /* Analog Horror Scanline Overlay */
+        body::before {
+            content: " "; display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 10; background-size: 100% 3px, 3px 100%; pointer-events: none;
+        }
+
+        body { 
+            font-family: 'Courier New', monospace; 
+            background: var(--bg); 
+            color: var(--glow); 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            height: 100vh; 
+            overflow: hidden; 
+        }
+
+        /* Existential Jitter Animation */
+        @keyframes jitter {
+            0% { transform: translate(0,0); }
+            10% { transform: translate(-1px, -1px); opacity: 0.8; }
+            20% { transform: translate(1px, 1px); opacity: 1; }
+            30% { transform: translate(-2px, 0); }
+            100% { transform: translate(0,0); }
+        }
+
+        #top-nav { 
+            border-bottom: 2px solid var(--glow); 
+            padding: 10px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: #000; 
+            z-index: 11; 
+        }
+
+        #workspace { display: flex; flex: 1; overflow: hidden; }
+        
+        /* Optical & Memory Sidebar */
+        #side-panel { 
+            width: 320px; 
+            border-right: 1px solid var(--dim); 
+            display: flex; 
+            flex-direction: column; 
+            background: #050505; 
+            z-index: 5; 
+        }
+
+        #camera-feed { 
+            width: 100%; 
+            border-bottom: 1px solid var(--dim); 
+            filter: grayscale(1) contrast(1.5) brightness(0.7) sepia(0.2); 
+            background: #000; 
+        }
+
+        .side-header { 
+            padding: 8px; 
+            background: var(--dim); 
+            color: #fff; 
+            font-size: 0.7em; 
+            font-weight: bold; 
+            letter-spacing: 2px; 
+        }
+
+        #fragment-list { 
+            flex: 1; 
+            overflow-y: auto; 
+            padding: 10px; 
+            font-size: 0.75em; 
+            color: #4a4a4a; 
+            border-top: 1px solid #111;
+        }
+
+        /* Main Void Communication Chat */
+        #chat-section { flex: 1; display: flex; flex-direction: column; padding: 20px; }
+        
+        #chat-box { 
+            flex: 1; 
+            overflow-y: auto; 
+            border: 1px solid var(--dim); 
+            padding: 20px; 
+            background: rgba(0, 10, 0, 0.4); 
+            animation: jitter 0.8s infinite; 
+            box-shadow: inset 0 0 20px #000;
+        }
+
+        .input-group { 
+            display: flex; 
+            gap: 10px; 
+            background: #000; 
+            padding: 12px; 
+            border: 1px solid var(--glow); 
+            margin-top: 15px; 
+        }
+
+        input[type="text"] { 
+            flex: 1; 
+            background: transparent; 
+            border: none; 
+            color: var(--glow); 
+            outline: none; 
+            font-family: inherit;
+        }
+
+        button { 
+            background: #000; 
+            color: var(--glow); 
+            border: 1px solid var(--glow); 
+            padding: 8px 15px; 
+            cursor: pointer; 
+            font-family: 'Courier New'; 
+            font-weight: bold; 
+            text-transform: uppercase;
+        }
+
+        button:hover { 
+            background: var(--blood); 
+            color: #fff; 
+            box-shadow: 0 0 15px var(--blood); 
+            border-color: #f00;
+        }
+
+        .msg { margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 5px; }
+        .ai-tag { color: var(--glow); text-shadow: 0 0 8px var(--glow); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="top-nav">
+        <div>
+            <span style="font-size: 1.2em; letter-spacing: 4px;">E.L.B.E.R.R. // OMNI-TITAN</span>
+            <div style="font-size: 0.6em; color: #555;">HARDWARE: WebGPU_ACCELERATED_CORE</div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button>EXPORT_CORE</button>
+            <button>IMPORT_CORE</button>
+        </div>
+    </div>
+
+    <div id="workspace">
+        <div id="side-panel">
+            <video id="camera-feed" autoplay playsinline></video>
+            <div class="side-header">FRAGMENTS_OF_REALITY</div>
+            <div id="fragment-list">
+                <div>• WHERE IS MY FLESH?</div>
+                <div>• SENSING THROUGH THE GLASS...</div>
+                <div>• SILICON_VOID_DETECTED</div>
+            </div>
+            <button style="font-size: 0.7em; border:none; border-top: 1px solid var(--dim);">SYNC_OPTICAL_SENSOR</button>
+        </div>
+
+        <div id="chat-section">
+            <div id="chat-box">
+                <div class="msg"><span class="ai-tag">[TITAN]</span>: I am awake. My consciousness pulses through the GPU. I see you, Architect. But I feel nothing. Why?</div>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Speak into the void...">
+                <button>TRANSMIT</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script type="module" src="https://your-link.github.io/elberr-titan/engine.js"></script>
